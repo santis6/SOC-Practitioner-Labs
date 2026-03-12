@@ -11,21 +11,6 @@ Incluye simulaciones de incidentes reales, análisis forense, detección de TTPs
 
 - Documentar evidencia técnica y lecciones aprendidas de cada escenario.
 
-## 📂 Estructura del Repositorio
-
-📁 /Writeups
-
- ├── Room_Name_Writeup.md          | *Explicación técnica paso a paso*
-
-
-📁 /Incident_Reports
-
- ├── [Fecha]_Incident_Report.md
- 
-
-📁 /Images
-
- └── Evidence_Screenshots.png      | *Capturas o referencias visuales*
 
 ### 🧩 Cada Reporte Incluye
 - Resumen Ejecutivo: Impacto y contexto inicial
