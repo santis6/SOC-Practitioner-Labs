@@ -155,6 +155,20 @@ VPN.exe.bin → .dll malicious → Network Activity → Data Exfil → Self-Dele
 └── T1070.004 - File Deletion (self-delete)
 
 
+### 4. **Comportamiento Específico del Stealer**
+
+1. Enumera perfiles de navegadores (Chrome/Edge)
+  
+2. Extrae credenciales via sqlite3.dll → Chrome Login Data
+   
+3. Empaqueta datos del sistema (hostname, user, IP)
+ 
+4. Codifica payload en base64 → HTTP POST al C2
+   
+5. Recibe comando de "éxito" → inicia cleanup
+  
+6. Borra DLLs en ProgramData → Self-delete
+
 
 ---
 
