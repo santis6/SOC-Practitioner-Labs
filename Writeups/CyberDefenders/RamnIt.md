@@ -24,6 +24,8 @@ Al revisar la lista inicialmente no vemos procesos potencialmente maliciosos evi
 
 
 
+
+
 Aquí podemos observar claramente una línea de comando sospechosa: **ChromeSetup.exe**. Este comportamiento es anómalo ya que un instalador legítimo de Chrome se cierra automáticamente tras completar la instalación, no permanece activo en el sistema. Con este criterio podemos responder tanto la primera como la segunda pregunta del laboratorio.  
 
 **R:** `ChromeSetup.exe`
