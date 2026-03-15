@@ -157,13 +157,13 @@ VirusTotal Analysis:
 
 ## 🔬 Herramientas Utilizadas
 
-🔍 Memoria Forense
+ Memoria Forense
 
 ├── Volatility 3 → pslist, cmdline, netscan, dumpfiles
 
 └── sha1sum → Hash calculation
 
-🛡️ Threat Intelligence
+ Threat Intelligence
 
 ├── VirusTotal → Sample analysis, timestamps, domains
 
@@ -175,7 +175,7 @@ VirusTotal Analysis:
 
 1. **Process Hunting**: `Windows.cmdline` > `pslist` para detectar persistence anómalo.
    
-2. **PID Correlation**: Siempre filtrar netscan por PID sospechoso (`grep PID`).
+2. **PID Correlation**: Siempre filtrar netscan por PID sospechoso (`grep -i "PID"`).
    
 3. **Memory Forensics Workflow**: Dump → Hash → VT Enrichment = IOCs accionables.
 
