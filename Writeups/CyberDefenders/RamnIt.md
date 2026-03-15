@@ -30,7 +30,7 @@ Aquí podemos observar claramente una línea de comando sospechosa: **ChromeSetu
 
 **R:** `ChromeSetup.exe`
 
---
+------
 
 | Q2 | What is the exact path of the executable for the malicious process? 
 -
@@ -39,7 +39,7 @@ Path del proceso malicioso confirmado desde los flags de cmdline en Volatility.
 
 **R:** `C:\Users\alex\Downloads\ChromeSetup.exe`
 
---
+------
 
 | Q3 | Identifying network connections is crucial for understanding the malware's communication strategy. What IP address did the malware attempt to connect to?  
 -
@@ -53,7 +53,7 @@ Path del proceso malicioso confirmado desde los flags de cmdline en Volatility.
 
 **R:** `58.64.204.181`
 
---
+------
 
 | Q4 |To determine the specific geographical origin of the attack, Which city is associated with the IP address the malware communicated with?  
 -
@@ -65,7 +65,7 @@ Path del proceso malicioso confirmado desde los flags de cmdline en Volatility.
 
 **R:** `Hong Kong`
 
---
+------
 
 | Q5 | Hashes serve as unique identifiers for files, assisting in the detection of similar threats across different machines. What is the SHA1 hash of the malware executable?  
 -
@@ -83,7 +83,7 @@ Tras el dumpeo exitoso del ejecutable, calculamos el hash SHA1:
 
 **R:** `280c9d36039f9432433893dee6126d72b9112ad2`
 
---
+------
 
 | Q6 | Examining the malware's development timeline can provide insights into its deployment. What is the compilation timestamp for the malware?
 -
@@ -96,7 +96,7 @@ Tras el dumpeo exitoso del ejecutable, calculamos el hash SHA1:
 
 **R:** `2019-12-01 08:36`
 
---
+------
 
 | Q7 | Identifying the domains associated with this malware is crucial for blocking future malicious communications and detecting any ongoing interactions with those domains within our network. Can you provide the domain connected to the malware?
 -
@@ -110,7 +110,7 @@ Tras el dumpeo exitoso del ejecutable, calculamos el hash SHA1:
 
 **R:** `dnsnb8.net`
 
---
+------
 
 ## 🛡️ Proceso de CTI (Cyber Threat Intelligence)
 
