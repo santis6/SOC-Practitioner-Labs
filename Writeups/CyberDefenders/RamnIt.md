@@ -22,7 +22,7 @@ Al revisar la lista inicialmente no vemos procesos potencialmente maliciosos evi
 
 `python3 vol.py -f (PATH al dump) Windows.cmdline`  
 
-
+![image alt](https://github.com/santis6/SOC-Practitioner-Labs/blob/a84ba7df59a89dac99516a0c3300307227b60f67/222.png)
 
 
 
