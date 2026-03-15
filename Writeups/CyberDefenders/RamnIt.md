@@ -37,7 +37,7 @@ Aquí podemos observar claramente una línea de comando sospechosa: **ChromeSetu
 
 Path del proceso malicioso confirmado desde los flags de cmdline en Volatility.  
 
-**R:** `C:\\Users\\alex\\Downloads\\ChromeSetup.exe`
+**R:** `C:\Users\alex\Downloads\ChromeSetup.exe`
 
 
 
@@ -48,6 +48,9 @@ Path del proceso malicioso confirmado desde los flags de cmdline en Volatility.
 
 `python3 vol.py -f (PATH al dump) Windows.netscan | grep -i "4628"`  
 
+![image alt](https://github.com/santis6/SOC-Practitioner-Labs/blob/d8b2e4c99556308e9b398a666b613c8a4e1a8f99/Screenshot_2026-03-14_16_19_13.png)
+
+
 **R:** `58.64.204.181`
 
 
@@ -56,6 +59,9 @@ Path del proceso malicioso confirmado desde los flags de cmdline en Volatility.
 -
 
 **Para geolocalizar la IP maliciosa recurrimos a plataformas como geodatatool, VirusTotal, WhatIsMyIPAddress**, entre otras herramientas de inteligencia de IP. 
+
+![image alt](https://github.com/santis6/SOC-Practitioner-Labs/blob/d8b2e4c99556308e9b398a666b613c8a4e1a8f99/Screenshot_2026-03-14_16_21_14.png)
+
 
 **R:** `Hong Kong`
 
@@ -67,6 +73,9 @@ Path del proceso malicioso confirmado desde los flags de cmdline en Volatility.
 **Ya con el proceso malicioso identificado (PID 4628), realizamos dump del ejecutable** para posteriormente calcular su hash. Utilizamos el plugin Windows.dumpfiles con el parámetro --pid para especificar el proceso objetivo:  
 
 `python3 vol.py -f (PATH al dump) Windows.dumpfiles --pid 4628`  
+
+![image alt](https://github.com/santis6/SOC-Practitioner-Labs/blob/d8b2e4c99556308e9b398a666b613c8a4e1a8f99/Screenshot_2026-03-14_16_37_39.png)
+
 
 Tras el dumpeo exitoso del ejecutable, calculamos el hash SHA1:  
 
@@ -81,6 +90,10 @@ Tras el dumpeo exitoso del ejecutable, calculamos el hash SHA1:
 
 **Realizamos análisis de Threat Intelligence en VirusTotal** ingresando el hash SHA1 extraído. En el apartado "Details" de la muestra identificamos la fecha de compilación del malware. 
 
+
+![image alt](https://github.com/santis6/SOC-Practitioner-Labs/blob/d8b2e4c99556308e9b398a666b613c8a4e1a8f99/Screenshot_2026-03-14_16_42_04.png)
+
+
 **R:** `2019-12-01 08:36`
 
 
@@ -89,6 +102,11 @@ Tras el dumpeo exitoso del ejecutable, calculamos el hash SHA1:
 -
 
 **En VirusTotal navegamos al apartado "Relations"** de la muestra analizada. En la sección "Contacted Domains" identificamos el dominio C2 asociado al malware.  
+
+
+![image alt](https://github.com/santis6/SOC-Practitioner-Labs/blob/d8b2e4c99556308e9b398a666b613c8a4e1a8f99/Screenshot_2026-03-14_16_43_21.png)
+
+
 
 **R:** `dnsnb8.net`
 
