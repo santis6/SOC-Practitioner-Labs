@@ -45,16 +45,27 @@ Cada writeup documenta un caso completo con la siguiente estructura:
 ## 📁 Estructura del Repositorio
 SOC-Practitioner-Labs/
 │
+
 ├── TryHackMe/
+
 │ ├── caso-001-nombre/
+
 │ └── ...
+
 │
+
 ├── CyberDefenders/
+
 │ ├── caso-001-nombre/
+
 │ └── ...
+
 │
+
 └── LetsDefend/
+
 ├── caso-001-nombre/
+
 └── ...
 
 
