@@ -179,7 +179,16 @@ IOC: PSEXESVC.exe en ADMIN$ de ambos hosts
 
 └── Follow TCP Stream → Cleartext credential extraction
 
+## 🎯 MITRE ATT&CK Mapping
 
+| Táctica | Técnica | ID | Descripción Observada |
+|---------|---------|----|-----------------------|
+| Execution | Remote Services: SMB/Windows Admin Shares | T1021.002 | PsExec ejecuta comandos remotos via SMB/ADMIN$ |
+| Lateral Movement | Remote Services: SMB/Windows Admin Shares | T1021.002 | Pivoting de Sales-PC a Marketing-PC |
+| Defense Evasion | Use Alternate Authentication Material | T1550 | Reutilización de credenciales NTLM (ssales) |
+| Discovery | Network Share Discovery | T1135 | Enumeración de shares IPC$ y ADMIN$ |
+| Execution | System Services: Service Execution | T1569.002 | PSEXESVC.exe instalado como servicio remoto |
+| Credential Access | Brute Force: Password Spraying | T1110.003 | Autenticación NTLM con credenciales comprometidas |
 
 ## 📊 Lecciones Aprendidas
 
