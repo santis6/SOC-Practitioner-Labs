@@ -262,7 +262,7 @@ Apache logs: vacíos → d41d8cd98f00b204e9800998ecf8427e (MD5 archivo vacío)
 
 1. **Bash History como Evidencia Forense**: El archivo `.bash_history` es una de las fuentes más valiosas en forense Linux, permitiendo reconstruir cronológicamente las acciones del usuario con alto nivel de detalle.
 2. **Privilegios de Servicios**: Ejecutar servicios como PostgreSQL con privilegios root es una misconfiguration crítica que puede ser abusada para escalación de privilegios lateral.
-3. **Presencia de Kali Linux en Endpoints Corporativos**: La existencia de Kali Linux en la workstation de un empleado no técnico es una red flag inmediata que debería generar alertas en cualquier entorno SOC.
+3. **Presencia de Kali Linux en Endpoints Corporativos**: La existencia de Kali Linux en la workstation de un empleado sin rol de seguridad justificado es una red flag inmediata que debería generar alertas en cualquier entorno SOC.
 
 ---
 
