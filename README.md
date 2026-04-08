@@ -109,8 +109,8 @@ SOC-Practitioner-Labs/
 | Security Analyst Level 1 (SAL1) — 948/1000 | TryHackMe | 2026 |
 | SOC Level 1 Path | TryHackMe | 2026 |
 | Introduction to Cybersecurity | Cisco | 2025 |
-| Network Security Fundamentals | Palo Alto Networks | 2025 |
 | Networking Basics | Cisco | 2025 |
+| Network Security Fundamentals | Palo Alto Networks | 2025 |
 
 ---
 
