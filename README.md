@@ -1,100 +1,117 @@
-# SOC Practitioner Labs 🛡️
+<div align="center">
 
-Repositorio de investigación y documentación de incidentes de seguridad 
-resueltos en entornos simulados de SOC real. Cada caso es tratado como 
-un incidente profesional: desde la detección inicial hasta la remediación, 
-con evidencia, killchain completa y reporte estructurado.
+# 🛡️ SOC Practitioner Labs
+
+**Documentación técnica de análisis forense, threat hunting e incident response**  
+en entornos simulados de Blue Team real.
+
+[![TryHackMe](https://img.shields.io/badge/TryHackMe-SAL1%20948%2F1000-red?style=for-the-badge&logo=tryhackme)](https://tryhackme.com/p/zaint.c06)
+[![CyberDefenders](https://img.shields.io/badge/CyberDefenders-Blue%20Team-blue?style=for-the-badge)](https://cyberdefenders.org)
+[![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-Mapped-orange?style=for-the-badge)](https://attack.mitre.org)
+[![Labs](https://img.shields.io/badge/Labs%20Completados-70%2B-brightgreen?style=for-the-badge)](https://github.com/santis6/SOC-Practitioner-Labs)
+
+> *"La detección no es suerte — es proceso."*
+
+</div>
 
 ---
 
 ## 🎯 Objetivo
 
-Construir experiencia práctica y demostrable en ciberseguridad defensiva 
-a través del análisis sistemático de incidentes reales en plataformas 
-especializadas. Este repositorio funciona como portfolio técnico y 
-registro de progreso en el camino hacia un rol formal en Blue Team.
+Portfolio técnico de ciberseguridad defensiva construido sobre análisis real de incidentes.  
+Cada caso documenta el proceso completo: detección → triaje → correlación → MITRE mapping → IOCs.
 
 ---
 
-## 🔍 ¿Qué encontrás acá?
+## 📊 TryHackMe
 
-Cada writeup documenta un caso completo con la siguiente estructura:
+<div align="center">
 
-- **Contexto del incidente** — descripción del escenario y vector de ataque
-- **Herramientas utilizadas** — stack técnico aplicado en la investigación
-- **Proceso de análisis** — paso a paso del triaje, correlación y detección
-- **Killchain** — mapeo de TTPs bajo el framework MITRE ATT&CK
-- **IOCs identificados** — IPs, dominios, hashes, URLs relevantes
-- **Conclusiones** — hallazgos clave.
+[![TryHackMe Stats](https://tryhackme-badges.s3.amazonaws.com/zaint.c06.png)](https://tryhackme.com/p/zaint.c06)
+
+</div>
+
+---
+
+## 🎯 MITRE ATT&CK Coverage
+
+Tácticas trabajadas en labs documentados:
+
+`Initial Access` `Execution` `Persistence` `Privilege Escalation`  
+`Defense Evasion` `Credential Access` `Discovery` `Collection`  
+`Command & Control` `Exfiltration`
+
+| Táctica | Técnicas Trabajadas |
+|---------|-------------------|
+| Credential Access | T1056.003 · T1003 · T1539 · T1555 |
+| Defense Evasion | T1497 · T1027 · T1574.002 |
+| Exfiltration | T1041 · T1132.001 · T1573.001 |
+| Execution | T1059.004 · T1204 |
+| Privilege Escalation | T1548.003 |
+| Initial Access | T1195.002 |
 
 ---
 
 ## 🧰 Stack Técnico
 
-| Categoría | Herramientas |
-|---|---|
-| SIEM / Log Analysis | Splunk (SPL), ELK Stack |
-| Network Forensics | Wireshark, PCAP analysis |
-| Host Forensics | Volatility, Sysmon, auditd |
-| Threat Intelligence | VirusTotal, AbuseIPDB, MalwareBazaar, URLScan.io |
-| Frameworks | MITRE ATT&CK, Cyber Kill Chain |
-| Scripting | Python, PowerShell, Regex |
+**SIEM & Log Analysis**  
+![Splunk](https://img.shields.io/badge/Splunk-SPL-black?style=flat-square&logo=splunk)
+![ELK](https://img.shields.io/badge/ELK-Stack-yellow?style=flat-square)
+
+**Network Forensics**  
+![Wireshark](https://img.shields.io/badge/Wireshark-PCAP-blue?style=flat-square&logo=wireshark)
+
+**Host Forensics & Malware**  
+![FTK](https://img.shields.io/badge/FTK-Imager-grey?style=flat-square)
+![Volatility](https://img.shields.io/badge/Volatility-Memory-darkblue?style=flat-square)
+![VirusTotal](https://img.shields.io/badge/VirusTotal-TI-blue?style=flat-square)
+
+**Threat Intelligence**  
+![MITRE](https://img.shields.io/badge/MITRE-ATT%26CK-orange?style=flat-square)
+![AbuseIPDB](https://img.shields.io/badge/AbuseIPDB-IOC-red?style=flat-square)
+
+**Scripting**  
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python)
+![PowerShell](https://img.shields.io/badge/PowerShell-blue?style=flat-square&logo=powershell)
 
 ---
 
 ## 📁 Estructura del Repositorio
 SOC-Practitioner-Labs/
 │
+├── Writeups/
+│ ├── CyberDefenders/
+│ ├── TryHackMe/
+│ └── LetsDefend/
 
-├── TryHackMe/
-
-│ ├── caso-001-nombre/
-
-│ └── ...
-
-│
-
-├── CyberDefenders/
-
-│ ├── caso-001-nombre/
-
-│ └── ...
-
-│
-
-└── LetsDefend/
-
-├── caso-001-nombre/
-
-└── ...
-
+text
 
 ---
 
 ## 📊 Progreso
 
-| Plataforma | Labs completados |
-|---|---|
-| TryHackMe | ✅ 60+ |
-| CyberDefenders | 🔄 En progreso |
-| LetsDefend | 🔄 En progreso |
+| Plataforma | Completados | Estado |
+|------------|------------|--------|
+| TryHackMe | 60+ rooms | ✅ SAL1 — 948/1000 |
+| CyberDefenders | 8 labs | 🔄 Activo |
+| LetsDefend | En curso | 🔄 Activo |
 
 ---
 
 ## 🏅 Certificaciones
 
-- **TryHackMe SAL1** — Security Analyst Level 1 | Mar. 2026 | Score: 948/1000
-- **TryHackMe** — SOC Level 1 Path | 2026
-- **Cisco** — Introduction to Cybersecurity | 2025
-- **Palo Alto Networks** — Network Security Fundamentals | 2025
+| Certificación | Emisor | Año |
+|--------------|--------|-----|
+| Security Analyst Level 1 (SAL1) — 948/1000 | TryHackMe | 2026 |
+| SOC Level 1 Path | TryHackMe | 2026 |
+| Introduction to Cybersecurity | Cisco | 2025 |
+| Network Security Fundamentals | Palo Alto Networks | 2025 |
 
 ---
 
 ## 📬 Contacto
 
-**Santiago Daniel Sandili**  
-[LinkedIn](https://www.linkedin.com/in/santiagodsandili) • 
-[TryHackMe](https://tryhackme.com/p/zaint.c06) • 
-sdsandili06@gmail.com
-
-> *"La detección no es suerte — es proceso."*
+**Santiago Daniel Sandili** — SOC Analyst (Blue Team)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/santiagodsandili)
+[![TryHackMe](https://img.shields.io/badge/TryHackMe-Profile-red?style=flat-square&logo=tryhackme)](https://tryhackme.com/p/zaint.c06)
+[![Email](https://img.shields.io/badge/Email-sdsandili06%40gmail.com-grey?style=flat-square&logo=gmail)](mailto:sdsandili06@gmail.com)
