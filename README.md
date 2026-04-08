@@ -77,14 +77,18 @@ Tácticas trabajadas en labs documentados:
 ---
 
 ## 📁 Estructura del Repositorio
+
 SOC-Practitioner-Labs/
-│
+
 ├── Writeups/
+
 │ ├── CyberDefenders/
+
 │ ├── TryHackMe/
+
 │ └── LetsDefend/
 
-text
+
 
 ---
 
