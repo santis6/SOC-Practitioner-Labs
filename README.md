@@ -5,7 +5,6 @@
 **Documentación técnica de análisis forense, threat hunting e incident response**  
 en entornos simulados de Blue Team real.
 
-[![TryHackMe](https://img.shields.io/badge/TryHackMe-SAL1%20948%2F1000-red?style=for-the-badge&logo=tryhackme)](https://tryhackme.com/p/zaint.c06)
 [![CyberDefenders](https://img.shields.io/badge/CyberDefenders-Blue%20Team-blue?style=for-the-badge)](https://cyberdefenders.org)
 [![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-Mapped-orange?style=for-the-badge)](https://attack.mitre.org)
 [![Labs](https://img.shields.io/badge/Labs%20Completados-70%2B-brightgreen?style=for-the-badge)](https://github.com/santis6/SOC-Practitioner-Labs)
@@ -20,16 +19,6 @@ en entornos simulados de Blue Team real.
 
 Portfolio técnico de ciberseguridad defensiva construido sobre análisis real de incidentes.  
 Cada caso documenta el proceso completo: detección → triaje → correlación → MITRE mapping → IOCs.
-
----
-
-## 📊 TryHackMe
-
-<div align="center">
-
-[![TryHackMe Stats](https://tryhackme-badges.s3.amazonaws.com/zaint.c06.png)](https://tryhackme.com/p/zaint.c06)
-
-</div>
 
 ---
 
@@ -84,8 +73,6 @@ SOC-Practitioner-Labs/
 
 │ ├── CyberDefenders/
 
-│ ├── TryHackMe/
-
 │ └── LetsDefend/
 
 
@@ -96,7 +83,7 @@ SOC-Practitioner-Labs/
 
 | Plataforma | Completados | Estado |
 |------------|------------|--------|
-| TryHackMe | 60+ rooms | ✅ SAL1 — 948/1000 |
+| TryHackMe  | ✅ SAL1 — 948/1000 |
 | CyberDefenders | 8 labs | 🔄 Activo |
 | LetsDefend | En curso | 🔄 Activo |
 
@@ -118,5 +105,4 @@ SOC-Practitioner-Labs/
 
 **Santiago Daniel Sandili** — SOC Analyst (Blue Team)  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/santiagodsandili)
-[![TryHackMe](https://img.shields.io/badge/TryHackMe-Profile-red?style=flat-square&logo=tryhackme)](https://tryhackme.com/p/zaint.c06)
 [![Email](https://img.shields.io/badge/Email-sdsandili06%40gmail.com-grey?style=flat-square&logo=gmail)](mailto:sdsandili06@gmail.com)
