@@ -96,7 +96,7 @@ Introducimos dicho payload en CyberChef para identificar el método de ofuscaci�
 | Q6 | After identifying how the script works, decrypt the files and submit the secret string. 
 -
 
-Con el funcionamiento completo del script ransomware identificado (algoritmo de cifrado, contraseña hardcodeada y archivos objetivo), procedemos a desarrollar un **script decrypter** basado en la lógica inversa del payload analizado.
+Con el funcionamiento completo del script ransomware identificado (algoritmo de cifrado, contraseña hardcodeada y archivos objetivo), procedemos a pedirle a nuestra IA de confianza un **script decrypter** basado en la lógica inversa del payload analizado.
 
 Al ejecutar el proceso de descifrado sobre los archivos encriptados, podemos corroborar que los mismos contienen **información claramente confidencial de la IMF**, lo que confirma que el ataque fue meticulosamente dirigido contra activos de alto valor. Al examinar el contenido del archivo `IMF-Mission.pdf` descifrado, encontramos al final del documento la **flag** que confirma la resolución exitosa del laboratorio.
 
