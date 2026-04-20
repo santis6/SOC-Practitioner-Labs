@@ -22,6 +22,8 @@ Este archivo es una **base de datos SQLite** donde Windows almacena todas las no
 
 Exportamos `wpndatabase.db` y lo abrimos con **DB Browser for SQLite**. En la tabla `Notification` identificamos un registro cuyo payload referencia explícitamente **`web.telegram.org`**, lo que indica que el empleado estaba utilizando **Telegram Web** como cliente de mensajería en el navegador. 
 
+<img width="1919" height="765" alt="1" src="https://github.com/user-attachments/assets/b86b6d76-9ce8-4ba3-b624-e6c09a599aca" />
+
 
 
 **R:** `Telegram`
@@ -40,7 +42,7 @@ Al expandir el payload en DB Browser for SQLite, encontramos el mensaje enviado 
 Esta línea deja explícito que el ZIP protegido enviado por el atacante utiliza la contraseña `@1122d`. 
 
 
-
+<img width="1919" height="705" alt="2" src="https://github.com/user-attachments/assets/374460b3-cc00-4370-92b8-f57314f73f7f" />
 
 
 **R:** `@1122d`  
@@ -59,16 +61,25 @@ Exportamos el archivo `templet.lnk` de la imagen forense y lo procesamos con **L
 LECmd.exe -f "templet.lnk"
 ```
 
-LECmd nos muestra campos clave como `TargetPath`, timestamps y especialmente **`CommandLineArguments`**. En lugar de apuntar a un documento legítimo, el LNK lanza **`powershell.exe`** con argumentos ofuscados, lo que confirma su rol como **launcher del payload**.
+LEcmd expone todos los campos estructurales del archivo: target path, timestamps, volume serial number y, lo más relevante para este caso, el campo Command Line Arguments. Al inspeccionarlo, confirmamos que el archivo no apuntaba a ningún documento legítimo, sino a powershell.exe con un argumento ofuscado — una red flag inmediata que nos indicó que este .lnk era el vector de ejecución inicial del atacante.
+
+<img width="1919" height="941" alt="3" src="https://github.com/user-attachments/assets/d90bd828-61c8-496a-898b-51b3258a38ca" />
+
+
+---
+
 
 **Fase 2 – filescan.io**  
 Subimos `templet.lnk` a **filescan.io**, que emula la ejecución y extrae automáticamente IOCs (URLs, dominios, DNS, etc.). En la sección **Network Behavior / Domains** se observa que el LNK descarga un HTA de segunda etapa desde:
 
 `https://masherofmasters.cyou/shins/se1.hta`
 
-Este `se1.hta` es ejecutado por `mshta.exe` (LOLBin clásico) y se obtiene mediante `System.Net.WebClient.DownloadString()` seguido de `Invoke-Expression`, ejecutando la segunda etapa completamente **en memoria** (fileless).  
+El archivo `se1.hta` es un HTML Application descargado y ejecutado por `mshta.exe` — un binario legítimo de Windows frecuentemente abusado en ataques Living off the Land (LotL) para evadir controles de seguridad basados en reputación de procesos.  
 
 
+
+
+<img width="1919" height="952" alt="3 1" src="https://github.com/user-attachments/assets/58432dd5-3392-4c56-86c2-a0f29f878073" />
 
 
 **R:** `masherofmasters.cyou`
@@ -84,7 +95,7 @@ Para esta pregunta seguimos tres pasos: identificación de **LOLAPP** instalada,
 Las **LOLAPPs** (*Living off the Land Applications*) son aplicaciones legítimas de usuario (no binarios del sistema) cuya funcionalidad puede ser abusada para ejecución o persistencia sin instalar malware adicional. El proyecto `lolapps-project.github.io` las cataloga de forma análoga a **LOLBAS** (para binarios Windows).
 
 **2) Identificación de Greenshot como LOLAPP**  
-Revisando programas instalados (por ejemplo, vía Autopsy o parsing de `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`) identificamos **Greenshot 1.2.10.6**. Consultando el catálogo de LOLAPPs, confirmamos que **Greenshot** está documentada como vector de persistencia mediante su **External Command Plugin**.
+El primer paso fue revisar las aplicaciones instaladas a través de Autopsy, en la sección Data Artifacts → Installed Programs. Allí identificamos **Greenshot 1.2.10.6**. Consultando el catálogo de LOLAPPs, confirmamos que **Greenshot** está documentada como vector de persistencia mediante su **External Command Plugin**.
 
 **3) Análisis de `Greenshot.ini`**  
 Navegamos a:  
@@ -106,7 +117,11 @@ Argument.jlhgfjhdfIghjhuhuh=C:\Users\OMEN\AppData\Local\Temp\templet.lnk
 El comando **`MS Paint`** funciona como señuelo legítimo, mientras que el comando **`jlhgfjhdfIghjhuhuh`** ejecuta `cmd.exe` apuntando a `templet.lnk`, re-lanzando toda la cadena maliciosa **cada vez que el usuario toma una captura de pantalla**.  
 
 
+<img width="1918" height="966" alt="4 1" src="https://github.com/user-attachments/assets/2626371b-fffe-46c0-a29c-a2b65c9d08fc" />
 
+------
+
+<img width="1784" height="681" alt="4" src="https://github.com/user-attachments/assets/87c6afc5-03a3-4a5f-afb4-cb9c7f1be313" />
 
 **R:** `jlhgfjhdfIghjhuhuh`
 
@@ -138,7 +153,7 @@ Para esta pregunta nos centramos en el artefacto **`SRUDB.dat`** ubicado en:
 Este archivo corresponde al **System Resource Usage Monitor (SRUM)**, un componente nativo de Windows que registra de forma continua el uso de recursos (CPU, red, energía, etc.) por aplicación, con resolución temporal fina, independientemente de los logs de eventos.
 
 **Parsing con SrumECmd**  
-Usamos **SrumECmd** (Eric Zimmerman) para parsear `SRUDB.dat` junto con el hive `SOFTWARE`, requisito para resolver nombres de aplicaciones:
+Usamos **SrumECmd** para parsear `SRUDB.dat` y lo exportamos en formato `csv` para inyectarlo en nuestro amigo **Timeline Explorer**:
 
 ```bash
 SrumECmd.exe -f "SRUDB.dat" --csv .
@@ -150,7 +165,9 @@ El comando genera, entre otros, el archivo:
 
 Al abrir este CSV y filtrar por **`AnyDesk.exe`**, observamos una sesión con ~**2.8 GB de datos enviados**, claramente desproporcionado para un uso de soporte remoto legítimo. Esto, correlacionado con el resto de la evidencia, apunta a **exfiltración de datos masiva** a través de AnyDesk.  
 
+<img width="1697" height="729" alt="5" src="https://github.com/user-attachments/assets/2726d701-d2c6-48e4-8d7d-ae9d29ed42dc" />
 
+<img width="1919" height="938" alt="5 1" src="https://github.com/user-attachments/assets/8e3a1d54-2f96-40ab-892b-9b31c71b228a" />
 
 
 **R:** `AnyDesk`
@@ -172,6 +189,7 @@ Importamos `ad.trace` en **Timeline Explorer** y filtramos por la palabra clave 
 El filtro devuelve las entradas de sesión correspondientes al atacante, revelando la IP pública utilizada durante la sesión de exfiltración (~2.8 GB) detectada previamente en SRUM.  
 
 
+<img width="1919" height="350" alt="6" src="https://github.com/user-attachments/assets/16bdef9d-85ff-4e8e-a16b-cbd65291dd15" />
 
 
 **R:** `77.232.122.31`
@@ -186,7 +204,7 @@ wpndatabase.db → Notificación web.telegram.org
 
 → Canal inicial: Telegram Web (chat con el atacante)
 
-ZIP protegido: our project templet test.zip (pass: @l122d)
+ZIP protegido: our project templet test.zip (pass: @1122d)
 
 
 
@@ -199,8 +217,6 @@ LECmd → Target: powershell.exe con argumentos ofuscados
 filescan.io → Descarga se1.hta desde masherofmasters.cyou
 
 Ejecutor: mshta.exe (LOLBin)
-
-Método: WebClient.DownloadString() + Invoke-Expression (fileless)
 
 
 
@@ -226,7 +242,7 @@ ad.trace → External address → 77.232.122.31
 
 Conclusión: AnyDesk usado como canal de exfiltración C2
 
-
+---
 
 ## 🎯 MITRE ATT&CK Mapping
 
@@ -239,6 +255,8 @@ Conclusión: AnyDesk usado como canal de exfiltración C2
 | Defense Evasion | Obfuscated Files or Information | T1027 | PowerShell ofuscado (Reverse + Base64) |
 | Command and Control | Remote Access Tools | T1219 | AnyDesk utilizado como RAT/exfil canal |
 | Exfiltration | Exfiltration Over C2 Channel | T1041 | ~2.8 GB enviados vía AnyDesk hacia 77.232.122.31 |
+
+---
 
 ## 🔬 Herramientas Utilizadas
 
@@ -260,7 +278,7 @@ Conclusión: AnyDesk usado como canal de exfiltración C2
 
 └── filescan.io → Emulación y extracción automática de IOCs del LNK
 
-
+---
 
 ## 📊 Lecciones Aprendidas
 
