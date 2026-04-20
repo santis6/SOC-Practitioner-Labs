@@ -37,7 +37,7 @@ Continuando el análisis de `wpndatabase.db`, profundizamos en el contenido del 
 
 Al expandir el payload en DB Browser for SQLite, encontramos el mensaje enviado por el atacante al empleado, donde se especifican tanto el nombre del archivo como la contraseña del ZIP:
 
-`our project templet test.zip, pass:@l122d`
+`our project templet test.zip, pass:@1122d`
 
 Esta línea deja explícito que el ZIP protegido enviado por el atacante utiliza la contraseña `@1122d`. 
 
